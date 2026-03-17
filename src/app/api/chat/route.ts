@@ -3,9 +3,11 @@ import type { ChatMessage, Tool, ToolCall } from '@/types/chat'
 import { generateSystemPrompt, productsKnowledge, faqKnowledge, companyInfo } from '@/lib/ai/knowledge'
 import { products } from '@/data/products'
 
-// OpenRouter API configuration
+// API configuration
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions'
-const MODEL = 'anthropic/claude-3-haiku'
+const CLAUDE_MODEL = 'anthropic/claude-3-haiku'
+const GLM_API_URL = process.env.GLM_API_URL || 'https://open.bigmodel.cn/api/paas/v4/chat/completions'
+const GLM_MODEL = 'glm-4'
 
 // Define available tools
 const tools: Tool[] = [
@@ -243,6 +245,7 @@ function executeAddToCart(params: {
     cartItem: {
       productId: product.id,
       productName: product.name,
+      productSlug: product.slug,
       color: params.color,
       sizes: params.sizes,
       unitPrice: product.priceRangeMin,
@@ -264,7 +267,6 @@ function executeCreateInquiry(params: {
   products?: string[]
   quantity?: string
 }) {
-  // In production, this would save to database and send email
   const inquiryId = `INQ-${Date.now()}-${Math.random().toString(36).substr(2, 5).toUpperCase()}`
   
   return {
@@ -295,7 +297,6 @@ function executeGetFaqAnswer(params: { topic: string }) {
     }
   }
 
-  // Default answers for common topics
   const defaultAnswers: Record<string, string> = {
     moq: `Our minimum order quantity is ${companyInfo.moq.standard} ${companyInfo.moq.unit}. ${companyInfo.moq.note}.`,
     shipping: `We ship globally. ${companyInfo.shipping.freeShipping}. Methods: ${companyInfo.shipping.methods.join(', ')}.`,
@@ -340,6 +341,105 @@ function executeToolCall(toolCall: ToolCall): unknown {
   }
 }
 
+// Call OpenRouter (Claude)
+async function callOpenRouter(
+  messages: ChatMessage[],
+  systemPrompt: string,
+  useTools: boolean = true
+): Promise<{ success: boolean; data?: unknown; error?: string }> {
+  const apiKey = process.env.OPENROUTER_API_KEY
+  
+  if (!apiKey) {
+    return { success: false, error: 'OpenRouter API key not configured' }
+  }
+
+  const apiMessages = [
+    { role: 'system' as const, content: systemPrompt },
+    ...messages.map(m => ({
+      role: m.role,
+      content: m.content,
+    })),
+  ]
+
+  try {
+    const response = await fetch(OPENROUTER_API_URL, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+        'X-Title': 'Sunmay Outdoor AI Assistant',
+      },
+      body: JSON.stringify({
+        model: CLAUDE_MODEL,
+        messages: apiMessages,
+        tools: useTools ? tools : undefined,
+        tool_choice: useTools ? 'auto' : undefined,
+        max_tokens: 1024,
+        temperature: 0.7,
+      }),
+    })
+
+    if (!response.ok) {
+      const error = await response.text()
+      return { success: false, error: `OpenRouter error: ${error}` }
+    }
+
+    const data = await response.json()
+    return { success: true, data }
+  } catch (error) {
+    return { success: false, error: `OpenRouter fetch error: ${error}` }
+  }
+}
+
+// Call GLM (fallback)
+async function callGLM(
+  messages: ChatMessage[],
+  systemPrompt: string
+): Promise<{ success: boolean; data?: unknown; error?: string }> {
+  const apiKey = process.env.GLM_API_KEY
+  
+  if (!apiKey) {
+    return { success: false, error: 'GLM API key not configured' }
+  }
+
+  const apiMessages = [
+    { role: 'system' as const, content: systemPrompt },
+    ...messages.map(m => ({
+      role: m.role === 'tool' ? 'user' : m.role,
+      content: m.content,
+    })),
+  ]
+
+  try {
+    const response = await fetch(GLM_API_URL, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: GLM_MODEL,
+        messages: apiMessages,
+        tools: tools,
+        tool_choice: 'auto',
+        max_tokens: 1024,
+        temperature: 0.7,
+      }),
+    })
+
+    if (!response.ok) {
+      const error = await response.text()
+      return { success: false, error: `GLM error: ${error}` }
+    }
+
+    const data = await response.json()
+    return { success: true, data }
+  } catch (error) {
+    return { success: false, error: `GLM fetch error: ${error}` }
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
@@ -356,84 +456,71 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const apiKey = process.env.OPENROUTER_API_KEY
-    
-    if (!apiKey) {
-      return NextResponse.json(
-        { error: 'OpenRouter API key not configured' },
-        { status: 500 }
-      )
-    }
-
-    // Build messages array for OpenRouter
     const systemPrompt = generateSystemPrompt(language)
     
-    const apiMessages = [
-      { role: 'system' as const, content: systemPrompt },
-      ...messages.map(m => ({
-        role: m.role,
-        content: m.content,
-      })),
-    ]
-
     // Add cart context if items exist
+    let contextMessages = [...messages]
     if (cartItems.length > 0) {
-      apiMessages.push({
-        role: 'system' as const,
-        content: `Current cart contents: ${JSON.stringify(cartItems)}. Remind customer about MOQ requirements if cart doesn't meet 200 pieces per style.`,
-      })
+      contextMessages = [
+        ...messages,
+        {
+          role: 'system' as const,
+          content: `Current cart contents: ${JSON.stringify(cartItems)}. Remind customer about MOQ requirements if cart doesn't meet 200 pieces per style.`,
+        },
+      ]
     }
 
-    // Call OpenRouter API
-    const response = await fetch(OPENROUTER_API_URL, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-        'HTTP-Referer': process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-        'X-Title': 'Sunmay Outdoor AI Assistant',
-      },
-      body: JSON.stringify({
-        model: MODEL,
-        messages: apiMessages,
-        tools,
-        tool_choice: 'auto',
-        max_tokens: 1024,
-        temperature: 0.7,
-      }),
-    })
+    // Try OpenRouter (Claude) first
+    let result = await callOpenRouter(contextMessages, systemPrompt)
+    let usedModel = 'claude'
+    
+    // Fallback to GLM if OpenRouter fails
+    if (!result.success) {
+      console.log('OpenRouter failed, falling back to GLM:', result.error)
+      result = await callGLM(contextMessages, systemPrompt)
+      usedModel = 'glm'
+    }
 
-    if (!response.ok) {
-      const error = await response.text()
-      console.error('OpenRouter API error:', error)
+    if (!result.success) {
       return NextResponse.json(
-        { error: 'AI service error' },
+        { error: result.error || 'AI service unavailable' },
         { status: 500 }
       )
     }
 
-    const data = await response.json()
-    const assistantMessage = data.choices[0]?.message
+    const data = result.data as Record<string, unknown>
+    const assistantMessage = (data.choices as unknown[])?.[0] as Record<string, unknown> | undefined
+    const messageContent = assistantMessage?.message as Record<string, unknown> | undefined
 
     // Handle tool calls
-    if (assistantMessage?.tool_calls && assistantMessage.tool_calls.length > 0) {
+    const toolCalls = messageContent?.tool_calls as unknown[] | undefined
+    if (toolCalls && toolCalls.length > 0) {
       const toolResults: { tool_call_id: string; result: unknown }[] = []
       
-      for (const toolCall of assistantMessage.tool_calls) {
-        const result = executeToolCall(toolCall as ToolCall)
+      for (const toolCall of toolCalls) {
+        const tc = toolCall as Record<string, unknown>
+        const func = tc.function as Record<string, unknown>
+        const result = executeToolCall({
+          id: tc.id as string,
+          type: 'function',
+          function: {
+            name: func.name as string,
+            arguments: func.arguments as string,
+          },
+        })
         toolResults.push({
-          tool_call_id: toolCall.id,
+          tool_call_id: tc.id as string,
           result,
         })
       }
 
-      // If there's a cart item to add, return it for frontend processing
+      // Find cart item
       const cartAdd = toolResults.find(r => {
         const res = r.result as Record<string, unknown>
         return res?.cartItem !== undefined
       })
 
-      // If there's an inquiry created, return it
+      // Find inquiry result
       const inquiryResult = toolResults.find(r => {
         const res = r.result as Record<string, unknown>
         return res?.inquiryId !== undefined
@@ -441,8 +528,8 @@ export async function POST(request: NextRequest) {
 
       // Continue conversation with tool results
       const followUpMessages: ChatMessage[] = [
-        ...messages,
-        { role: 'assistant', content: '', tool_calls: assistantMessage.tool_calls },
+        ...contextMessages,
+        { role: 'assistant', content: '', tool_calls: toolCalls as ToolCall[] },
         ...toolResults.map(tr => ({
           role: 'tool' as const,
           content: JSON.stringify(tr.result),
@@ -450,39 +537,32 @@ export async function POST(request: NextRequest) {
         })),
       ]
 
-      // Get final response
-      const followUpResponse = await fetch(OPENROUTER_API_URL, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-          'HTTP-Referer': process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-          'X-Title': 'Sunmay Outdoor AI Assistant',
-        },
-        body: JSON.stringify({
-          model: MODEL,
-          messages: [
-            { role: 'system', content: systemPrompt },
-            ...followUpMessages,
-          ],
-          max_tokens: 1024,
-          temperature: 0.7,
-        }),
-      })
+      // Get final response (try same model first, fallback if needed)
+      let followUpResult = usedModel === 'claude' 
+        ? await callOpenRouter(followUpMessages, systemPrompt, false)
+        : await callGLM(followUpMessages, systemPrompt)
+      
+      if (!followUpResult.success && usedModel === 'claude') {
+        followUpResult = await callGLM(followUpMessages, systemPrompt)
+      }
 
-      const followUpData = await followUpResponse.json()
-      const finalContent = followUpData.choices[0]?.message?.content || 'I processed your request.'
+      const followUpData = followUpResult.data as Record<string, unknown> | undefined
+      const followUpChoices = followUpData?.choices as unknown[] | undefined
+      const finalMessage = followUpChoices?.[0] as Record<string, unknown> | undefined
+      const finalContent = (finalMessage?.message as Record<string, unknown>)?.content as string || 'I processed your request.'
 
       return NextResponse.json({
         message: finalContent,
         toolResults,
         cartItem: cartAdd ? (cartAdd.result as Record<string, unknown>)?.cartItem || null : null,
         inquiry: inquiryResult ? inquiryResult.result : null,
+        model: usedModel,
       })
     }
 
     return NextResponse.json({
-      message: assistantMessage?.content || 'I apologize, I could not process your request.',
+      message: (messageContent?.content as string) || 'I apologize, I could not process your request.',
+      model: usedModel,
     })
 
   } catch (error) {

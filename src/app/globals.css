@@ -1,0 +1,292 @@
+@import "tailwindcss";
+
+/* ============================================
+   SUNMAY OUTDOOR - Design System
+   户外机能品牌视觉系统
+   ============================================ */
+
+:root {
+  /* Core Colors - 户外/机能品牌配色 */
+  --primary: #0f0f0f;           /* 深石墨黑 */
+  --primary-light: #1a1a1a;     /* 次深黑 */
+  --secondary: #262626;         /* 深灰 */
+  --tertiary: #404040;          /* 中灰 */
+  
+  /* Accent Colors - 高对比度点缀 */
+  --accent: #f97316;            /* 橙色 - 警示/探险 */
+  --accent-hover: #ea580c;      /* 橙色悬停 */
+  --accent-green: #22c55e;      /* 自然绿 */
+  --accent-blue: #0ea5e9;       /* 天空蓝 */
+  
+  /* Neutral Colors */
+  --surface: #fafafa;           /* 亮白背景 */
+  --surface-alt: #f4f4f5;       /* 次白背景 */
+  --border: #e4e4e7;            /* 边框色 */
+  --border-dark: #3f3f46;       /* 深色边框 */
+  
+  /* Text Colors */
+  --text-primary: #0f0f0f;
+  --text-secondary: #525252;
+  --text-muted: #a1a1aa;
+  --text-inverse: #fafafa;
+  
+  /* Semantic Colors */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  
+  /* Spacing */
+  --section-gap: 4rem;
+  --container-max: 1280px;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+@theme inline {
+  --color-background: var(--surface);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   Typography - 户外品牌字体风格
+   ============================================ */
+
+.font-display {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.font-mono-data {
+  font-family: 'JetBrains Mono', 'SF Mono', monospace;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* ============================================
+   Component Styles
+   ============================================ */
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: var(--text-inverse);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Cards - 硬朗边角 */
+.card-dark {
+  background: var(--primary);
+  border: 1px solid var(--border-dark);
+}
+
+.card-light {
+  background: white;
+  border: 1px solid var(--border);
+}
+
+/* Data Display - 数据展示 */
+.data-label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.data-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.data-unit {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-left: 0.25rem;
+}
+
+/* Technical Specs Bar - 技术参数条 */
+.specs-bar {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Section Styles */
+.section-dark {
+  background: var(--primary);
+  color: var(--text-inverse);
+}
+
+.section-alt {
+  background: var(--surface-alt);
+}
+
+/* Grid Pattern Background */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Gradient Overlays */
+.gradient-dark {
+  background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+}
+
+.gradient-hero {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, #1e3a2f 100%);
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-accent {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease forwards;
+}
+
+.animate-pulse-accent {
+  animation: pulse-accent 2s ease-in-out infinite;
+}
+
+/* ============================================
+   Responsive Utilities
+   ============================================ */
+
+@media (max-width: 768px) {
+  :root {
+    --section-gap: 2.5rem;
+  }
+  
+  .data-value {
+    font-size: 1.25rem;
+  }
+  
+  .specs-bar {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+/* ============================================
+   Scrollbar Styling
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--tertiary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+/* ============================================
+   Selection Styling
+   ============================================ */
+
+::selection {
+  background: var(--accent);
+  color: white;
+}

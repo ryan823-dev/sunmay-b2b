@@ -1,0 +1,143 @@
+{
+  "site": {
+    "name": "Sunmay",
+    "description": "Professional Outdoor Apparel Manufacturer - Ski Jackets, Hunting Gear, Technical Outerwear",
+    "tagline": "Built for Performance. Delivered with Confidence."
+  },
+  "nav": {
+    "products": "Products",
+    "wholesale": "Wholesale",
+    "quote": "Request Quote",
+    "about": "About Us",
+    "factory": "Our Factory",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "Professional Outdoor Apparel",
+      "subtitle": "From Ski Slopes to Hunting Trails",
+      "description": "MOQ 200 pieces. Seam-sealed, waterproof, breathable. 20 years of manufacturing excellence.",
+      "cta": "Start Your Order",
+      "secondaryCta": "Request Custom Quote"
+    },
+    "categories": {
+      "title": "Product Categories",
+      "ski": "Ski & Snowboard",
+      "hunting": "Hunting & Outdoor",
+      "tactical": "Tactical & Workwear",
+      "casual": "Urban Outdoor"
+    },
+    "whyUs": {
+      "title": "Why Choose Sunmay",
+      "experience": "20 Years Experience",
+      "experienceDesc": "Specialized in technical outerwear since 2006",
+      "moq": "Low MOQ",
+      "moqDesc": "Start from 200 pieces per style",
+      "quality": "Quality Assured",
+      "qualityDesc": "Seam-sealing, waterproofing, breathability",
+      "capacity": "Large Capacity",
+      "capacityDesc": "1.5 million pieces annual production"
+    },
+    "factory": {
+      "title": "Three Production Bases",
+      "subtitle": "Strategic locations for flexible production",
+      "myanmar": "Myanmar Factory - 950 workers, 10 lines",
+      "jiangsu1": "Jiangsu Shunyu - 278 workers, 7 lines",
+      "jiangsu2": "Jiangsu Shunhao - 120 workers, 3 lines"
+    }
+  },
+  "product": {
+    "specifications": "Specifications",
+    "colors": "Colors",
+    "sizes": "Sizes",
+    "moq": "Minimum Order",
+    "pieces": "pieces",
+    "priceRange": "Price Range",
+    "addToCart": "Add to Cart",
+    "requestQuote": "Request Quote",
+    "relatedProducts": "Related Products",
+    "features": "Key Features",
+    "materials": "Materials"
+  },
+  "cart": {
+    "title": "Wholesale Cart",
+    "empty": "Your cart is empty",
+    "continueShopping": "Continue Shopping",
+    "item": "item",
+    "items": "items",
+    "subtotal": "Subtotal",
+    "checkout": "Proceed to Checkout",
+    "remove": "Remove",
+    "color": "Color",
+    "size": "Size",
+    "quantity": "Quantity",
+    "unitPrice": "Unit Price",
+    "total": "Total",
+    "moqWarning": "Minimum order quantity is 200 pieces per style"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "shipping": "Shipping Address",
+    "payment": "Payment Method",
+    "review": "Review Order",
+    "placeOrder": "Place Order",
+    "company": "Company Name",
+    "contact": "Contact Name",
+    "email": "Email",
+    "phone": "Phone",
+    "country": "Country",
+    "address": "Address",
+    "city": "City",
+    "state": "State/Province",
+    "postalCode": "Postal Code"
+  },
+  "quote": {
+    "title": "Request a Quote",
+    "subtitle": "For custom orders or large quantities, please fill out the form below",
+    "companyName": "Company Name",
+    "contactName": "Contact Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "country": "Country",
+    "products": "Products Interested",
+    "quantity": "Estimated Quantity",
+    "message": "Additional Requirements",
+    "messagePlaceholder": "Please describe your requirements: colors, sizes, custom features, timeline, etc.",
+    "files": "Attach Files (optional)",
+    "submit": "Submit Inquiry",
+    "success": "Thank you! We'll get back to you within 24 hours."
+  },
+  "about": {
+    "title": "About Sunmay",
+    "founded": "Founded in 2006",
+    "story": "Nanjing Sunmay Co., Ltd. was founded in 2006, originally as STIG under Sainty Group. Since 2018, we operate independently with full management authority.",
+    "mission": "Our mission is to become a trusted partner for our customers, offering excellent garment products and services.",
+    "capacity": "Annual Production",
+    "capacityValue": "1.5 million pieces",
+    "turnover": "Annual Turnover",
+    "turnoverValue": "$30 million",
+    "shipments": "Annual Shipments",
+    "shipmentsValue": "100+ containers"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "address": "Address",
+    "email": "Email",
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "hours": "Business Hours",
+    "hoursValue": "Mon-Fri 9:00-18:00 (CST)"
+  },
+  "footer": {
+    "products": "Products",
+    "company": "Company",
+    "support": "Support",
+    "sizeChart": "Size Chart",
+    "shipping": "Shipping Info",
+    "payment": "Payment Methods",
+    "faq": "FAQ",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "copyright": "© 2024 Nanjing Sunmay Co., Ltd. All rights reserved."
+  }
+}

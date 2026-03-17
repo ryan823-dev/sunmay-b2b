@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import type { ChatMessage, Tool, ToolCall } from '@/types/chat'
 import { generateSystemPrompt, productsKnowledge, faqKnowledge, companyInfo } from '@/lib/ai/knowledge'
+import { getResponseLanguage } from '@/lib/ai/languageDetect'
 import { products } from '@/data/products'
 
 // API configuration
@@ -443,9 +444,8 @@ async function callGLM(
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { messages, language = 'en', cartItems = [] } = body as {
+    const { messages, cartItems = [] } = body as {
       messages: ChatMessage[]
-      language?: string
       cartItems?: unknown[]
     }
 
@@ -456,7 +456,11 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const systemPrompt = generateSystemPrompt(language)
+    // Detect language from the last user message
+    const lastUserMessage = [...messages].reverse().find(m => m.role === 'user')
+    const detectedLanguage = lastUserMessage ? getResponseLanguage(lastUserMessage.content) : 'en'
+    
+    const systemPrompt = generateSystemPrompt(detectedLanguage)
     
     // Add cart context if items exist
     let contextMessages = [...messages]

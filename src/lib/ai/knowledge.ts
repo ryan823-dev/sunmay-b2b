@@ -1,5 +1,6 @@
 // Knowledge base for AI assistant
 import { products, categories } from '@/data/products'
+import { getLanguageInstruction } from './languageDetect'
 
 // Company information
 export const companyInfo = {
@@ -156,7 +157,9 @@ export const faqKnowledge = [
 ]
 
 // System prompt for the AI assistant
-export function generateSystemPrompt(language: string = 'en'): string {
+export function generateSystemPrompt(responseLanguage: string = 'en'): string {
+  const languageInstruction = getLanguageInstruction(responseLanguage)
+  
   return `You are a professional customer service assistant for Sunmay Outdoor, a B2B outdoor apparel manufacturer specializing in ski jackets, hunting gear, tactical wear, and technical outerwear.
 
 ## Your Role
@@ -187,7 +190,6 @@ ${companyInfo.capabilities.join('\n')}
 - Proactively suggest relevant products
 - Guide customers toward creating an inquiry for serious interest
 - Always mention MOQ (200 pieces) for product inquiries
-- Respond in the same language the customer uses
 
 ## Available Tools
 You have access to tools to help customers:
@@ -203,6 +205,6 @@ You have access to tools to help customers:
 - If unsure about pricing, suggest requesting a quote
 - Be honest about lead times and MOQ requirements
 
-Current language: ${language}
-Respond in ${language === 'en' ? 'English' : language === 'de' ? 'German' : language === 'fr' ? 'French' : language === 'es' ? 'Spanish' : language === 'ru' ? 'Russian' : 'English'}.`
+## Language Rule
+${languageInstruction}`
 }

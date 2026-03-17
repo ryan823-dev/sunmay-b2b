@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { I18nProvider } from "@/i18n";
 import { CartProvider } from "@/lib/cart/CartContext";
+import { AIChatButton } from "@/components/ai/AIChatButton";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -41,6 +42,7 @@ export default function RootLayout({
               </main>
               <Footer />
             </div>
+            <AIChatButton />
           </CartProvider>
         </I18nProvider>
       </body>

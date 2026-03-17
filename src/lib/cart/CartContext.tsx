@@ -12,6 +12,7 @@ export interface CartItem {
   colorHex: string
   sizes: { size: string; quantity: number }[]
   unitPrice: number
+  moq?: number
 }
 
 interface CartState {

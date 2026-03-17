@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Send, Loader2, MountainSnow, Shield, Droplets, Wind } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useI18n } from '@/i18n'
+import { useAIChat } from '@/lib/ai/AIChatContext'
 
 interface AIHeroProps {
   headline: string
@@ -25,16 +26,19 @@ export function AIHero({
   secondaryCta,
 }: AIHeroProps) {
   const { t } = useI18n()
+  const { openChat } = useAIChat()
   const [prompt, setPrompt] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async () => {
     if (!prompt.trim()) return
     setIsLoading(true)
+    
+    // Open AI chat with the prompt
     setTimeout(() => {
       setIsLoading(false)
-      window.location.href = `/quote?message=${encodeURIComponent(prompt)}`
-    }, 1000)
+      openChat(prompt)
+    }, 500)
   }
 
   const handleQuickAction = (actionPrompt: string) => {
@@ -42,7 +46,7 @@ export function AIHero({
   }
 
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+    <section data-hero-section className="relative min-h-[90vh] flex items-center overflow-hidden">
       {/* Background - 深色渐变 */}
       <div className="absolute inset-0 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900">
         <div className="absolute inset-0 opacity-20" style={{
@@ -122,7 +126,7 @@ export function AIHero({
               />
               <div className="flex items-center justify-between px-4 pb-4">
                 <span className="text-xs text-neutral-600">
-                  Human team confirms all orders
+                  Chat with AI assistant
                 </span>
                 <button
                   onClick={handleSubmit}
@@ -139,7 +143,7 @@ export function AIHero({
                   ) : (
                     <Send className="w-4 h-4" />
                   )}
-                  <span className="hidden sm:inline">Send</span>
+                  <span className="hidden sm:inline">Chat Now</span>
                 </button>
               </div>
             </div>

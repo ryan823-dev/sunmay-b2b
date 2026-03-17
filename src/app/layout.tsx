@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { I18nProvider } from "@/i18n";
 import { CartProvider } from "@/lib/cart/CartContext";
+import { AIChatProvider } from "@/lib/ai/AIChatContext";
 import { AIChatButton } from "@/components/ai/AIChatButton";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
+import { HeroObserver } from "@/components/ai/HeroObserver";
 
 export const metadata: Metadata = {
   title: "Sunmay - Professional Outdoor Apparel Manufacturer",
@@ -32,17 +28,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className="font-sans antialiased">
         <I18nProvider>
           <CartProvider>
-            <div className="min-h-screen flex flex-col">
-              <Header />
-              <main className="flex-1 pt-16">
-                {children}
-              </main>
-              <Footer />
-            </div>
-            <AIChatButton />
+            <AIChatProvider>
+              <div className="min-h-screen flex flex-col">
+                <Header />
+                <main className="flex-1 pt-16">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+              <HeroObserver />
+              <AIChatButton />
+            </AIChatProvider>
           </CartProvider>
         </I18nProvider>
       </body>

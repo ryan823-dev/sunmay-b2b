@@ -1,29 +1,18 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Send, X, Loader2, ShoppingCart, Package, MessageSquare, Sparkles } from 'lucide-react'
+import { Send, X, Loader2, ShoppingCart, Sparkles } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useCart } from '@/lib/cart/CartContext'
 import { useI18n } from '@/i18n'
-import type { CartItem } from '@/lib/cart/CartContext'
+import { useAIChat } from '@/lib/ai/AIChatContext'
 
 interface ChatMessage {
   id: string
   role: 'user' | 'assistant'
   content: string
   timestamp: Date
-  products?: ProductResult[]
   cartItem?: CartItemData
-}
-
-interface ProductResult {
-  id: string
-  name: string
-  slug: string
-  category: string
-  priceRange: string
-  colors: string[]
-  moq: number
 }
 
 interface CartItemData {
@@ -37,14 +26,11 @@ interface CartItemData {
   moq: number
 }
 
-interface AIChatWidgetProps {
-  isOpen: boolean
-  onClose: () => void
-}
-
-export function AIChatWidget({ isOpen, onClose }: AIChatWidgetProps) {
-  const { t, locale } = useI18n()
+export function AIChatWidget() {
+  const { locale } = useI18n()
   const { addItem, state } = useCart()
+  const { isOpen, closeChat, initialMessage, clearInitialMessage } = useAIChat()
+  
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: 'welcome',
@@ -57,6 +43,27 @@ export function AIChatWidget({ isOpen, onClose }: AIChatWidgetProps) {
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const initialMessageProcessed = useRef(false)
+
+  // Handle initial message from Hero
+  useEffect(() => {
+    if (isOpen && initialMessage && !initialMessageProcessed.current) {
+      initialMessageProcessed.current = true
+      setInput(initialMessage)
+      clearInitialMessage()
+      // Auto-send after a brief delay
+      setTimeout(() => {
+        sendMessageWithText(initialMessage)
+      }, 100)
+    }
+  }, [isOpen, initialMessage])
+
+  // Reset processed flag when chat closes
+  useEffect(() => {
+    if (!isOpen) {
+      initialMessageProcessed.current = false
+    }
+  }, [isOpen])
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
@@ -68,13 +75,13 @@ export function AIChatWidget({ isOpen, onClose }: AIChatWidgetProps) {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
-  const sendMessage = async () => {
-    if (!input.trim() || isLoading) return
+  const sendMessageWithText = async (text: string) => {
+    if (!text.trim() || isLoading) return
 
     const userMessage: ChatMessage = {
       id: Date.now().toString(),
       role: 'user',
-      content: input.trim(),
+      content: text.trim(),
       timestamp: new Date(),
     }
 
@@ -105,7 +112,6 @@ export function AIChatWidget({ isOpen, onClose }: AIChatWidgetProps) {
         timestamp: new Date(),
       }
 
-      // Handle cart item from AI
       if (data.cartItem) {
         assistantMessage.cartItem = data.cartItem
       }
@@ -123,6 +129,10 @@ export function AIChatWidget({ isOpen, onClose }: AIChatWidgetProps) {
     } finally {
       setIsLoading(false)
     }
+  }
+
+  const sendMessage = async () => {
+    await sendMessageWithText(input)
   }
 
   const handleAddToCart = (cartItem: CartItemData) => {
@@ -156,7 +166,7 @@ export function AIChatWidget({ isOpen, onClose }: AIChatWidgetProps) {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-4 md:inset-auto md:bottom-4 md:right-4 md:w-[420px] md:h-[600px] bg-neutral-900 border border-neutral-700 flex flex-col z-50 shadow-2xl">
+    <div className="fixed inset-4 md:inset-auto md:bottom-20 md:right-4 md:w-[420px] md:h-[560px] bg-neutral-900 border border-neutral-700 flex flex-col z-50 shadow-2xl">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-700 bg-neutral-800">
         <div className="flex items-center gap-3">
@@ -169,7 +179,7 @@ export function AIChatWidget({ isOpen, onClose }: AIChatWidgetProps) {
           </div>
         </div>
         <button
-          onClick={onClose}
+          onClick={closeChat}
           className="text-neutral-400 hover:text-white transition-colors"
         >
           <X className="w-5 h-5" />
@@ -196,7 +206,6 @@ export function AIChatWidget({ isOpen, onClose }: AIChatWidgetProps) {
             >
               <p className="whitespace-pre-wrap">{message.content}</p>
               
-              {/* Cart item action */}
               {message.cartItem && (
                 <div className="mt-3 p-2 bg-neutral-700 border border-neutral-600">
                   <p className="text-xs text-neutral-300 mb-2">

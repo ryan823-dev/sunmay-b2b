@@ -14,36 +14,84 @@
   },
   "home": {
     "hero": {
-      "title": "Vêtements de Plein Air Professionnels",
+      "headline": "Fabrication Professionnelle de Vêtements de Plein Air",
       "subtitle": "Des pistes de ski aux sentiers de chasse",
-      "description": "MOQ 200 pièces. Coutures scellées, imperméable, respirant. 20 ans d'excellence de fabrication.",
-      "cta": "Commencer votre commande",
-      "secondaryCta": "Demander un devis personnalisé"
+      "description": "MOQ 200 pièces. Coutures scellées, imperméable, respirant. 20 ans d'excellence de fabrication avec trois bases de production.",
+      "placeholderPrompt": "ex., J'ai besoin de 500 vestes de ski, indice d'étanchéité 10 000mm, pour ma marque outdoor en France...",
+      "primaryCta": "Parcourir les produits",
+      "secondaryCta": "Demander un devis personnalisé",
+      "quickActionSki": "Vestes de ski",
+      "quickActionHunting": "Équipement de chasse",
+      "quickActionTactical": "Vêtements tactiques",
+      "quickActionCustom": "Design personnalisé"
+    },
+    "techSpecs": {
+      "waterproofLabel": "Imperméable",
+      "waterproofValue": "10 000mm",
+      "waterproofDesc": "Indice hydrostatique",
+      "breathableLabel": "Respirant",
+      "breathableValue": "8 000g/m²",
+      "breathableDesc": "Transmission de vapeur",
+      "insulationLabel": "Isolation",
+      "insulationValue": "650-850 FP",
+      "insulationDesc": "Options de pouvoir gonflant"
     },
     "categories": {
-      "title": "Catégories de produits",
+      "label": "Lignes de produits",
+      "title": "Catégories",
       "ski": "Ski & Snowboard",
       "hunting": "Chasse & Plein air",
       "tactical": "Tactique & Travail",
-      "casual": "Urbain & Plein air"
+      "urban": "Urbain & Plein air",
+      "products": "produits"
+    },
+    "featured": {
+      "label": "Prêt à personnaliser",
+      "title": "Produits vedettes",
+      "viewAll": "Voir tout",
+      "viewAllProducts": "Voir tous les produits",
+      "moq": "MOQ",
+      "colors": "couleurs"
     },
     "whyUs": {
-      "title": "Pourquoi choisir Sunmay",
-      "experience": "20 ans d'expérience",
+      "label": "Pourquoi Sunmay",
+      "title": "Votre partenaire de fabrication de confiance",
+      "experienceTitle": "20 ans d'expérience",
       "experienceDesc": "Spécialisé dans les vêtements techniques depuis 2006",
-      "moq": "MOQ bas",
-      "moqDesc": "À partir de 200 pièces par style",
-      "quality": "Qualité garantie",
-      "qualityDesc": "Scellement des coutures, imperméabilité, respirabilité",
-      "capacity": "Grande capacité",
-      "capacityDesc": "1,5 million de pièces de production annuelle"
+      "workersTitle": "1 350+ ouvriers",
+      "workersDesc": "Trois bases de production en Chine et au Myanmar",
+      "qualityTitle": "Qualité garantie",
+      "qualityDesc": "Scellement des coutures, imperméabilité, tests de respirabilité",
+      "shippingTitle": "Livraison mondiale",
+      "shippingDesc": "Livré dans plus de 35 pays"
     },
     "factory": {
+      "label": "Capacité de production",
       "title": "Trois bases de production",
-      "subtitle": "Emplacements stratégiques pour une production flexible",
-      "myanmar": "Usine Myanmar - 950 ouvriers, 10 lignes",
-      "jiangsu1": "Jiangsu Shunyu - 278 ouvriers, 7 lignes",
-      "jiangsu2": "Jiangsu Shunhao - 120 ouvriers, 3 lignes"
+      "description": "Des emplacements stratégiques en Chine et au Myanmar offrent une capacité de production flexible et des prix compétitifs pour les clients internationaux.",
+      "myanmarName": "Usine Myanmar",
+      "myanmarWorkers": "950 ouvriers",
+      "myanmarLines": "10 lignes de production",
+      "myanmarNote": "Avantage sans droits de douane pour l'UE",
+      "jiangsu1Name": "Jiangsu Shunyu",
+      "jiangsu1Workers": "278 ouvriers",
+      "jiangsu1Lines": "7 lignes de production",
+      "jiangsu1Note": "Délai rapide pour les échantillons",
+      "jiangsu2Name": "Jiangsu Shunhao",
+      "jiangsu2Workers": "120 ouvriers",
+      "jiangsu2Lines": "3 lignes de production",
+      "jiangsu2Note": "Spécialiste designs complexes",
+      "learnMore": "En savoir plus sur nos usines",
+      "factoryImage": "Image usine",
+      "productionLine": "Ligne de production",
+      "qualityControl": "Contrôle qualité",
+      "warehouse": "Entrepôt"
+    },
+    "cta": {
+      "title": "Prêt à passer commande?",
+      "description": "Que vous ayez besoin de 200 ou 20 000 pièces, nous avons la capacité et l'expertise pour livrer des vêtements de plein air de qualité pour votre marque.",
+      "browseProducts": "Parcourir les produits",
+      "requestQuote": "Demander un devis personnalisé"
     }
   },
   "product": {
@@ -74,6 +122,22 @@
     "unitPrice": "Prix unitaire",
     "total": "Total",
     "moqWarning": "La commande minimum est de 200 pièces par style"
+  },
+  "checkout": {
+    "title": "Paiement",
+    "shipping": "Adresse de livraison",
+    "payment": "Mode de paiement",
+    "review": "Vérifier la commande",
+    "placeOrder": "Passer la commande",
+    "company": "Nom de l'entreprise",
+    "contact": "Nom du contact",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "country": "Pays",
+    "address": "Adresse",
+    "city": "Ville",
+    "state": "État/Province",
+    "postalCode": "Code postal"
   },
   "quote": {
     "title": "Demander un devis",

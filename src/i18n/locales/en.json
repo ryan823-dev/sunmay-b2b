@@ -14,36 +14,84 @@
   },
   "home": {
     "hero": {
-      "title": "Professional Outdoor Apparel",
+      "headline": "Professional Outdoor Apparel Manufacturing",
       "subtitle": "From Ski Slopes to Hunting Trails",
-      "description": "MOQ 200 pieces. Seam-sealed, waterproof, breathable. 20 years of manufacturing excellence.",
-      "cta": "Start Your Order",
-      "secondaryCta": "Request Custom Quote"
+      "description": "MOQ 200 pieces. Seam-sealed, waterproof, breathable. 20 years of manufacturing excellence with three production bases.",
+      "placeholderPrompt": "e.g., I need 500 ski jackets, waterproof rating 10,000mm, for my outdoor brand in Germany...",
+      "primaryCta": "Browse Products",
+      "secondaryCta": "Request Custom Quote",
+      "quickActionSki": "Ski Jackets",
+      "quickActionHunting": "Hunting Gear",
+      "quickActionTactical": "Tactical Wear",
+      "quickActionCustom": "Custom Design"
+    },
+    "techSpecs": {
+      "waterproofLabel": "Waterproof",
+      "waterproofValue": "10,000mm",
+      "waterproofDesc": "Hydrostatic head rating",
+      "breathableLabel": "Breathable",
+      "breathableValue": "8,000g/m²",
+      "breathableDesc": "Moisture vapor transmission",
+      "insulationLabel": "Insulation",
+      "insulationValue": "650-850 FP",
+      "insulationDesc": "Down fill power options"
     },
     "categories": {
-      "title": "Product Categories",
+      "label": "Product Lines",
+      "title": "Categories",
       "ski": "Ski & Snowboard",
       "hunting": "Hunting & Outdoor",
       "tactical": "Tactical & Workwear",
-      "casual": "Urban Outdoor"
+      "urban": "Urban Outdoor",
+      "products": "products"
+    },
+    "featured": {
+      "label": "Ready to Customize",
+      "title": "Featured Products",
+      "viewAll": "View All",
+      "viewAllProducts": "View All Products",
+      "moq": "MOQ",
+      "colors": "colors"
     },
     "whyUs": {
-      "title": "Why Choose Sunmay",
-      "experience": "20 Years Experience",
+      "label": "Why Sunmay",
+      "title": "Your Trusted Manufacturing Partner",
+      "experienceTitle": "20 Years Experience",
       "experienceDesc": "Specialized in technical outerwear since 2006",
-      "moq": "Low MOQ",
-      "moqDesc": "Start from 200 pieces per style",
-      "quality": "Quality Assured",
-      "qualityDesc": "Seam-sealing, waterproofing, breathability",
-      "capacity": "Large Capacity",
-      "capacityDesc": "1.5 million pieces annual production"
+      "workersTitle": "1,350+ Workers",
+      "workersDesc": "Three production bases across China and Myanmar",
+      "qualityTitle": "Quality Assured",
+      "qualityDesc": "Seam-sealing, waterproofing, breathability testing",
+      "shippingTitle": "Global Shipping",
+      "shippingDesc": "Delivered to 35+ countries worldwide"
     },
     "factory": {
+      "label": "Production Capacity",
       "title": "Three Production Bases",
-      "subtitle": "Strategic locations for flexible production",
-      "myanmar": "Myanmar Factory - 950 workers, 10 lines",
-      "jiangsu1": "Jiangsu Shunyu - 278 workers, 7 lines",
-      "jiangsu2": "Jiangsu Shunhao - 120 workers, 3 lines"
+      "description": "Strategic locations across China and Myanmar provide flexible production capacity and competitive pricing for global customers.",
+      "myanmarName": "Myanmar Factory",
+      "myanmarWorkers": "950 workers",
+      "myanmarLines": "10 production lines",
+      "myanmarNote": "Duty-free advantage for EU market",
+      "jiangsu1Name": "Jiangsu Shunyu",
+      "jiangsu1Workers": "278 workers",
+      "jiangsu1Lines": "7 production lines",
+      "jiangsu1Note": "Quick turnaround for samples",
+      "jiangsu2Name": "Jiangsu Shunhao",
+      "jiangsu2Workers": "120 workers",
+      "jiangsu2Lines": "3 production lines",
+      "jiangsu2Note": "Complex design specialist",
+      "learnMore": "Learn More About Our Factories",
+      "factoryImage": "Factory Image",
+      "productionLine": "Production Line",
+      "qualityControl": "Quality Control",
+      "warehouse": "Warehouse"
+    },
+    "cta": {
+      "title": "Ready to Start Your Order?",
+      "description": "Whether you need 200 pieces or 20,000, we have the capacity and expertise to deliver quality outdoor apparel for your brand.",
+      "browseProducts": "Browse Products",
+      "requestQuote": "Request Custom Quote"
     }
   },
   "product": {

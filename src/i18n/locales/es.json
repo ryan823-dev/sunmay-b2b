@@ -14,36 +14,84 @@
   },
   "home": {
     "hero": {
-      "title": "Ropa Outdoor Profesional",
+      "headline": "Fabricación Profesional de Ropa Outdoor",
       "subtitle": "De las pistas de esquí a los senderos de caza",
-      "description": "MOQ 200 piezas. Costuras selladas, impermeable, transpirable. 20 años de excelencia en fabricación.",
-      "cta": "Comenzar tu pedido",
-      "secondaryCta": "Solicitar cotización personalizada"
+      "description": "MOQ 200 piezas. Costuras selladas, impermeable, transpirable. 20 años de excelencia en fabricación con tres bases de producción.",
+      "placeholderPrompt": "ej., Necesito 500 chaquetas de esquí, clasificación impermeable 10,000mm, para mi marca outdoor en España...",
+      "primaryCta": "Ver productos",
+      "secondaryCta": "Solicitar cotización personalizada",
+      "quickActionSki": "Chaquetas de esquí",
+      "quickActionHunting": "Equipo de caza",
+      "quickActionTactical": "Ropa táctica",
+      "quickActionCustom": "Diseño personalizado"
+    },
+    "techSpecs": {
+      "waterproofLabel": "Impermeable",
+      "waterproofValue": "10,000mm",
+      "waterproofDesc": "Clasificación de cabeza hidrostática",
+      "breathableLabel": "Transpirable",
+      "breathableValue": "8,000g/m²",
+      "breathableDesc": "Transmisión de vapor de humedad",
+      "insulationLabel": "Aislamiento",
+      "insulationValue": "650-850 FP",
+      "insulationDesc": "Opciones de poder de relleno"
     },
     "categories": {
-      "title": "Categorías de productos",
+      "label": "Líneas de productos",
+      "title": "Categorías",
       "ski": "Esquí y Snowboard",
       "hunting": "Caza y Outdoor",
       "tactical": "Táctico y Trabajo",
-      "casual": "Urbano Outdoor"
+      "urban": "Urbano Outdoor",
+      "products": "productos"
+    },
+    "featured": {
+      "label": "Listo para personalizar",
+      "title": "Productos destacados",
+      "viewAll": "Ver todo",
+      "viewAllProducts": "Ver todos los productos",
+      "moq": "MOQ",
+      "colors": "colores"
     },
     "whyUs": {
-      "title": "Por qué elegir Sunmay",
-      "experience": "20 años de experiencia",
+      "label": "Por qué Sunmay",
+      "title": "Su socio de fabricación de confianza",
+      "experienceTitle": "20 años de experiencia",
       "experienceDesc": "Especializados en ropa técnica desde 2006",
-      "moq": "MOQ bajo",
-      "moqDesc": "Desde 200 piezas por estilo",
-      "quality": "Calidad garantizada",
-      "qualityDesc": "Sellado de costuras, impermeabilidad, transpirabilidad",
-      "capacity": "Gran capacidad",
-      "capacityDesc": "1,5 millones de piezas de producción anual"
+      "workersTitle": "1,350+ trabajadores",
+      "workersDesc": "Tres bases de producción en China y Myanmar",
+      "qualityTitle": "Calidad garantizada",
+      "qualityDesc": "Sellado de costuras, impermeabilidad, pruebas de transpirabilidad",
+      "shippingTitle": "Envío global",
+      "shippingDesc": "Entrega en más de 35 países"
     },
     "factory": {
+      "label": "Capacidad de producción",
       "title": "Tres bases de producción",
-      "subtitle": "Ubicaciones estratégicas para producción flexible",
-      "myanmar": "Fábrica Myanmar - 950 trabajadores, 10 líneas",
-      "jiangsu1": "Jiangsu Shunyu - 278 trabajadores, 7 líneas",
-      "jiangsu2": "Jiangsu Shunhao - 120 trabajadores, 3 líneas"
+      "description": "Ubicaciones estratégicas en China y Myanmar ofrecen capacidad de producción flexible y precios competitivos para clientes globales.",
+      "myanmarName": "Fábrica Myanmar",
+      "myanmarWorkers": "950 trabajadores",
+      "myanmarLines": "10 líneas de producción",
+      "myanmarNote": "Ventaja libre de aranceles para la UE",
+      "jiangsu1Name": "Jiangsu Shunyu",
+      "jiangsu1Workers": "278 trabajadores",
+      "jiangsu1Lines": "7 líneas de producción",
+      "jiangsu1Note": "Rápido retorno para muestras",
+      "jiangsu2Name": "Jiangsu Shunhao",
+      "jiangsu2Workers": "120 trabajadores",
+      "jiangsu2Lines": "3 líneas de producción",
+      "jiangsu2Note": "Especialista en diseños complejos",
+      "learnMore": "Más información sobre nuestras fábricas",
+      "factoryImage": "Imagen de fábrica",
+      "productionLine": "Línea de producción",
+      "qualityControl": "Control de calidad",
+      "warehouse": "Almacén"
+    },
+    "cta": {
+      "title": "¿Listo para iniciar su pedido?",
+      "description": "Ya sea que necesite 200 o 20,000 piezas, tenemos la capacidad y experiencia para ofrecer ropa outdoor de calidad para su marca.",
+      "browseProducts": "Ver productos",
+      "requestQuote": "Solicitar cotización personalizada"
     }
   },
   "product": {
@@ -74,6 +122,22 @@
     "unitPrice": "Precio unitario",
     "total": "Total",
     "moqWarning": "El pedido mínimo es de 200 piezas por estilo"
+  },
+  "checkout": {
+    "title": "Pago",
+    "shipping": "Dirección de envío",
+    "payment": "Método de pago",
+    "review": "Revisar pedido",
+    "placeOrder": "Realizar pedido",
+    "company": "Nombre de la empresa",
+    "contact": "Nombre de contacto",
+    "email": "Email",
+    "phone": "Teléfono",
+    "country": "País",
+    "address": "Dirección",
+    "city": "Ciudad",
+    "state": "Estado/Provincia",
+    "postalCode": "Código postal"
   },
   "quote": {
     "title": "Solicitar una cotización",

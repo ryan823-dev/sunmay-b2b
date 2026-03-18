@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { AIHero } from '@/components/ai/AIHero'
 import { useI18n } from '@/i18n'
@@ -46,43 +48,58 @@ const sampleProducts = [
   },
 ]
 
-const categories = [
-  { name: 'Ski & Snowboard', icon: MountainSnow, slug: 'ski-snowboard', count: 120 },
-  { name: 'Hunting & Outdoor', icon: Target, slug: 'hunting-outdoor', count: 85 },
-  { name: 'Tactical & Workwear', icon: ShieldCheck, slug: 'tactical-workwear', count: 60 },
-  { name: 'Urban Outdoor', icon: Building2, slug: 'urban-outdoor', count: 45 },
-]
-
-const whyUs = [
-  { icon: Factory, title: '20 Years Experience', desc: 'Specialized in technical outerwear since 2006' },
-  { icon: Users, title: '1,350+ Workers', desc: 'Three production bases across China and Myanmar' },
-  { icon: ShieldCheck, title: 'Quality Assured', desc: 'Seam-sealing, waterproofing, breathability testing' },
-  { icon: Truck, title: 'Global Shipping', desc: 'Delivered to 35+ countries worldwide' },
-]
-
-const techSpecs = [
-  { icon: Droplets, label: 'Waterproof', value: '10,000mm', desc: 'Hydrostatic head rating' },
-  { icon: Wind, label: 'Breathable', value: '8,000g/m²', desc: 'Moisture vapor transmission' },
-  { icon: Thermometer, label: 'Insulation', value: '650-850 FP', desc: 'Down fill power options' },
-]
-
 export default function HomePage() {
+  const { t } = useI18n()
+
+  const categories = [
+    { name: t('home.categories.ski'), icon: MountainSnow, slug: 'ski-snowboard', count: 120 },
+    { name: t('home.categories.hunting'), icon: Target, slug: 'hunting-outdoor', count: 85 },
+    { name: t('home.categories.tactical'), icon: ShieldCheck, slug: 'tactical-workwear', count: 60 },
+    { name: t('home.categories.urban'), icon: Building2, slug: 'urban-outdoor', count: 45 },
+  ]
+
+  const whyUs = [
+    { icon: Factory, title: t('home.whyUs.experienceTitle'), desc: t('home.whyUs.experienceDesc') },
+    { icon: Users, title: t('home.whyUs.workersTitle'), desc: t('home.whyUs.workersDesc') },
+    { icon: ShieldCheck, title: t('home.whyUs.qualityTitle'), desc: t('home.whyUs.qualityDesc') },
+    { icon: Truck, title: t('home.whyUs.shippingTitle'), desc: t('home.whyUs.shippingDesc') },
+  ]
+
+  const techSpecs = [
+    { icon: Droplets, label: t('home.techSpecs.waterproofLabel'), value: t('home.techSpecs.waterproofValue'), desc: t('home.techSpecs.waterproofDesc') },
+    { icon: Wind, label: t('home.techSpecs.breathableLabel'), value: t('home.techSpecs.breathableValue'), desc: t('home.techSpecs.breathableDesc') },
+    { icon: Thermometer, label: t('home.techSpecs.insulationLabel'), value: t('home.techSpecs.insulationValue'), desc: t('home.techSpecs.insulationDesc') },
+  ]
+
+  const factories = [
+    { num: '01', name: t('home.factory.myanmarName'), workers: t('home.factory.myanmarWorkers'), lines: t('home.factory.myanmarLines'), note: t('home.factory.myanmarNote') },
+    { num: '02', name: t('home.factory.jiangsu1Name'), workers: t('home.factory.jiangsu1Workers'), lines: t('home.factory.jiangsu1Lines'), note: t('home.factory.jiangsu1Note') },
+    { num: '03', name: t('home.factory.jiangsu2Name'), workers: t('home.factory.jiangsu2Workers'), lines: t('home.factory.jiangsu2Lines'), note: t('home.factory.jiangsu2Note') },
+  ]
+
+  const factoryImages = [
+    t('home.factory.factoryImage'),
+    t('home.factory.productionLine'),
+    t('home.factory.qualityControl'),
+    t('home.factory.warehouse'),
+  ]
+
   return (
     <div className="bg-white">
       {/* AI Hero Section */}
       <AIHero
-        headline="Professional Outdoor Apparel Manufacturing"
-        subtitle="From Ski Slopes to Hunting Trails"
-        description="MOQ 200 pieces. Seam-sealed, waterproof, breathable. 20 years of manufacturing excellence with three production bases."
-        placeholderPrompt="e.g., I need 500 ski jackets, waterproof rating 10,000mm, for my outdoor brand in Germany..."
+        headline={t('home.hero.headline')}
+        subtitle={t('home.hero.subtitle')}
+        description={t('home.hero.description')}
+        placeholderPrompt={t('home.hero.placeholderPrompt')}
         quickActions={[
-          { label: 'Ski Jackets', prompt: 'I need ski jackets for my brand...' },
-          { label: 'Hunting Gear', prompt: 'Looking for hunting apparel...' },
-          { label: 'Tactical Wear', prompt: 'Need tactical jackets...' },
-          { label: 'Custom Design', prompt: 'I have a custom design...' },
+          { label: t('home.hero.quickActionSki'), prompt: 'I need ski jackets for my brand...' },
+          { label: t('home.hero.quickActionHunting'), prompt: 'Looking for hunting apparel...' },
+          { label: t('home.hero.quickActionTactical'), prompt: 'Need tactical jackets...' },
+          { label: t('home.hero.quickActionCustom'), prompt: 'I have a custom design...' },
         ]}
-        primaryCta="Browse Products"
-        secondaryCta="Request Custom Quote"
+        primaryCta={t('home.hero.primaryCta')}
+        secondaryCta={t('home.hero.secondaryCta')}
       />
 
       {/* Technical Capabilities Bar */}
@@ -111,10 +128,10 @@ export default function HomePage() {
           <div className="flex items-end justify-between mb-12">
             <div>
               <div className="text-xs text-orange-500 font-semibold uppercase tracking-widest mb-2">
-                Product Lines
+                {t('home.categories.label')}
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-white">
-                Categories
+                {t('home.categories.title')}
               </h2>
             </div>
           </div>
@@ -130,7 +147,7 @@ export default function HomePage() {
                   <category.icon className="w-6 h-6 text-orange-500" />
                 </div>
                 <h3 className="font-bold text-white mb-1">{category.name}</h3>
-                <p className="text-sm text-neutral-500 font-mono">{category.count} products</p>
+                <p className="text-sm text-neutral-500 font-mono">{category.count} {t('home.categories.products')}</p>
               </Link>
             ))}
           </div>
@@ -143,17 +160,17 @@ export default function HomePage() {
           <div className="flex items-end justify-between mb-12">
             <div>
               <div className="text-xs text-orange-500 font-semibold uppercase tracking-widest mb-2">
-                Ready to Customize
+                {t('home.featured.label')}
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-neutral-900">
-                Featured Products
+                {t('home.featured.title')}
               </h2>
             </div>
             <Link
               href="/products"
               className="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-neutral-900 hover:text-orange-500 transition-colors uppercase tracking-wider"
             >
-              View All <ArrowRight className="w-4 h-4" />
+              {t('home.featured.viewAll')} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
@@ -181,9 +198,9 @@ export default function HomePage() {
                     {product.name}
                   </h3>
                   <div className="flex items-center gap-2 text-xs text-neutral-500">
-                    <span className="font-mono">MOQ {product.moq}</span>
+                    <span className="font-mono">{t('home.featured.moq')} {product.moq}</span>
                     <span className="w-px h-3 bg-neutral-200" />
-                    <span className="font-mono">{product.colors} colors</span>
+                    <span className="font-mono">{product.colors} {t('home.featured.colors')}</span>
                   </div>
                 </div>
               </Link>
@@ -195,7 +212,7 @@ export default function HomePage() {
               href="/products"
               className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-900 uppercase tracking-wider"
             >
-              View All Products <ArrowRight className="w-4 h-4" />
+              {t('home.featured.viewAllProducts')} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -206,10 +223,10 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="text-xs text-orange-500 font-semibold uppercase tracking-widest mb-2">
-              Why Sunmay
+              {t('home.whyUs.label')}
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-white">
-              Your Trusted Manufacturing Partner
+              {t('home.whyUs.title')}
             </h2>
           </div>
 
@@ -233,22 +250,17 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="text-xs text-orange-500 font-semibold uppercase tracking-widest mb-2">
-                Production Capacity
+                {t('home.factory.label')}
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-neutral-900 mb-6">
-                Three Production Bases
+                {t('home.factory.title')}
               </h2>
               <p className="text-lg text-neutral-600 mb-8">
-                Strategic locations across China and Myanmar provide flexible production capacity 
-                and competitive pricing for global customers.
+                {t('home.factory.description')}
               </p>
 
               <div className="space-y-4">
-                {[
-                  { num: '01', name: 'Myanmar Factory', workers: '950 workers', lines: '10 production lines', note: 'Duty-free advantage for EU market' },
-                  { num: '02', name: 'Jiangsu Shunyu', workers: '278 workers', lines: '7 production lines', note: 'Quick turnaround for samples' },
-                  { num: '03', name: 'Jiangsu Shunhao', workers: '120 workers', lines: '3 production lines', note: 'Complex design specialist' },
-                ].map((factory) => (
+                {factories.map((factory) => (
                   <div key={factory.num} className="flex gap-4 p-4 bg-neutral-50 border-l-2 border-orange-500">
                     <div className="text-2xl font-bold text-orange-500 font-mono">
                       {factory.num}
@@ -266,12 +278,12 @@ export default function HomePage() {
                 href="/factory"
                 className="inline-flex items-center gap-2 mt-8 text-sm font-semibold text-neutral-900 hover:text-orange-500 transition-colors uppercase tracking-wider"
               >
-                Learn More About Our Factories <ArrowRight className="w-4 h-4" />
+                {t('home.factory.learnMore')} <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              {['Factory Image', 'Production Line', 'Quality Control', 'Warehouse'].map((label, i) => (
+              {factoryImages.map((label, i) => (
                 <div key={i} className="bg-neutral-100 aspect-square flex items-center justify-center">
                   <span className="text-neutral-400 text-sm">{label}</span>
                 </div>
@@ -290,24 +302,23 @@ export default function HomePage() {
         
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
-            Ready to Start Your Order?
+            {t('home.cta.title')}
           </h2>
           <p className="text-lg text-neutral-400 mb-8 max-w-2xl mx-auto">
-            Whether you need 200 pieces or 20,000, we have the capacity and expertise 
-            to deliver quality outdoor apparel for your brand.
+            {t('home.cta.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/products"
               className="inline-flex items-center justify-center px-8 py-4 bg-orange-500 text-white font-semibold uppercase tracking-wider hover:bg-orange-600 transition-colors"
             >
-              Browse Products
+              {t('home.cta.browseProducts')}
             </Link>
             <Link
               href="/quote"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-neutral-600 text-white font-semibold uppercase tracking-wider hover:bg-neutral-800 hover:border-neutral-500 transition-colors"
             >
-              Request Custom Quote
+              {t('home.cta.requestQuote')}
             </Link>
           </div>
         </div>

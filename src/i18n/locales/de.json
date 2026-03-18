@@ -1,108 +1,191 @@
 {
-  "de": {
-    "site": {
-      "name": "Sunmay",
-      "description": "Professioneller Outdoor-Bekleidungshersteller - Skijacken, Jagdbekleidung, technische Outdoor-Bekleidung",
-      "tagline": "Für Leistung gebaut. Mit Vertrauen geliefert."
+  "site": {
+    "name": "Sunmay",
+    "description": "Professioneller Outdoor-Bekleidungshersteller - Skijacken, Jagdbekleidung, technische Outdoor-Bekleidung",
+    "tagline": "Für Leistung gebaut. Mit Vertrauen geliefert."
+  },
+  "nav": {
+    "products": "Produkte",
+    "wholesale": "Großhandel",
+    "quote": "Angebot anfordern",
+    "about": "Über uns",
+    "factory": "Unsere Fabrik",
+    "contact": "Kontakt"
+  },
+  "home": {
+    "hero": {
+      "headline": "Professionelle Outdoor-Bekleidungsherstellung",
+      "subtitle": "Von Skipisten bis Jagdpfaden",
+      "description": "MOQ 200 Stück. Nahtversiegelt, wasserdicht, atmungsaktiv. 20 Jahre Fertigungsexzellenz mit drei Produktionsstandorten.",
+      "placeholderPrompt": "z.B., Ich brauche 500 Skijacken, Wasserdichtigkeit 10.000mm, für meine Outdoor-Marke in Deutschland...",
+      "primaryCta": "Produkte durchsuchen",
+      "secondaryCta": "Individuelles Angebot anfordern",
+      "quickActionSki": "Skijacken",
+      "quickActionHunting": "Jagdbekleidung",
+      "quickActionTactical": "Taktische Kleidung",
+      "quickActionCustom": "Individuelles Design"
     },
-    "nav": {
-      "products": "Produkte",
-      "wholesale": "Großhandel",
-      "quote": "Angebot anfordern",
-      "about": "Über uns",
-      "factory": "Unsere Fabrik",
-      "contact": "Kontakt"
+    "techSpecs": {
+      "waterproofLabel": "Wasserdicht",
+      "waterproofValue": "10.000mm",
+      "waterproofDesc": "Hydrostatische Kopfdruckprüfung",
+      "breathableLabel": "Atmungsaktiv",
+      "breathableValue": "8.000g/m²",
+      "breathableDesc": "Feuchtigkeitstransmission",
+      "insulationLabel": "Isolierung",
+      "insulationValue": "650-850 FP",
+      "insulationDesc": "Daunenfüllkraft Optionen"
     },
-    "home": {
-      "hero": {
-        "title": "Professionelle Outdoor-Bekleidung",
-        "subtitle": "Von Skipisten bis Jagdpfaden",
-        "description": "MOQ 200 Stück. Nahtversiegelt, wasserdicht, atmungsaktiv. 20 Jahre Fertigungsexzellenz.",
-        "cta": "Bestellung starten",
-        "secondaryCta": "Individuelles Angebot anfordern"
-      },
-      "categories": {
-        "title": "Produktkategorien",
-        "ski": "Ski & Snowboard",
-        "hunting": "Jagd & Outdoor",
-        "tactical": "Taktisch & Arbeitskleidung",
-        "casual": "Urban Outdoor"
-      },
-      "whyUs": {
-        "title": "Warum Sunmay wählen",
-        "experience": "20 Jahre Erfahrung",
-        "experienceDesc": "Spezialisiert auf technische Outdoor-Bekleidung seit 2006",
-        "moq": "Niedrige MOQ",
-        "moqDesc": "Ab 200 Stück pro Stil",
-        "quality": "Qualität garantiert",
-        "qualityDesc": "Nahtversiegelung, Wasserdichtigkeit, Atmungsaktivität",
-        "capacity": "Große Kapazität",
-        "capacityDesc": "1,5 Millionen Stück Jahresproduktion"
-      },
-      "factory": {
-        "title": "Drei Produktionsstandorte",
-        "subtitle": "Strategische Standorte für flexible Produktion",
-        "myanmar": "Myanmar Fabrik - 950 Mitarbeiter, 10 Linien",
-        "jiangsu1": "Jiangsu Shunyu - 278 Mitarbeiter, 7 Linien",
-        "jiangsu2": "Jiangsu Shunhao - 120 Mitarbeiter, 3 Linien"
-      }
+    "categories": {
+      "label": "Produktlinien",
+      "title": "Kategorien",
+      "ski": "Ski & Snowboard",
+      "hunting": "Jagd & Outdoor",
+      "tactical": "Taktisch & Arbeitskleidung",
+      "urban": "Urban Outdoor",
+      "products": "Produkte"
     },
-    "product": {
-      "specifications": "Spezifikationen",
-      "colors": "Farben",
-      "sizes": "Größen",
-      "moq": "Mindestbestellung",
-      "pieces": "Stück",
-      "priceRange": "Preisspanne",
-      "addToCart": "In den Warenkorb",
-      "requestQuote": "Angebot anfordern",
-      "relatedProducts": "Ähnliche Produkte",
-      "features": "Hauptmerkmale",
-      "materials": "Materialien"
+    "featured": {
+      "label": "Individualisierbar",
+      "title": "Ausgewählte Produkte",
+      "viewAll": "Alle anzeigen",
+      "viewAllProducts": "Alle Produkte anzeigen",
+      "moq": "MOQ",
+      "colors": "Farben"
     },
-    "cart": {
-      "title": "Großhandelswarenkorb",
-      "empty": "Ihr Warenkorb ist leer",
-      "continueShopping": "Weiter einkaufen",
-      "item": "Artikel",
-      "items": "Artikel",
-      "subtotal": "Zwischensumme",
-      "checkout": "Zur Kasse",
-      "remove": "Entfernen",
-      "color": "Farbe",
-      "size": "Größe",
-      "quantity": "Menge",
-      "unitPrice": "Stückpreis",
-      "total": "Gesamt",
-      "moqWarning": "Mindestbestellmenge ist 200 Stück pro Stil"
+    "whyUs": {
+      "label": "Warum Sunmay",
+      "title": "Ihr vertrauenswürdiger Fertigungspartner",
+      "experienceTitle": "20 Jahre Erfahrung",
+      "experienceDesc": "Spezialisiert auf technische Outdoor-Bekleidung seit 2006",
+      "workersTitle": "1.350+ Mitarbeiter",
+      "workersDesc": "Drei Produktionsstandorte in China und Myanmar",
+      "qualityTitle": "Qualität garantiert",
+      "qualityDesc": "Nahtversiegelung, Wasserdichtigkeit, Atmungsaktivitätstests",
+      "shippingTitle": "Weltweiter Versand",
+      "shippingDesc": "Lieferung in über 35 Länder weltweit"
     },
-    "quote": {
-      "title": "Angebot anfordern",
-      "subtitle": "Für Sonderanfertigungen oder große Mengen füllen Sie bitte das Formular aus",
-      "companyName": "Firmenname",
-      "contactName": "Kontaktperson",
-      "email": "E-Mail-Adresse",
-      "phone": "Telefonnummer",
-      "country": "Land",
-      "products": "Interessierte Produkte",
-      "quantity": "Geschätzte Menge",
-      "message": "Zusätzliche Anforderungen",
-      "messagePlaceholder": "Bitte beschreiben Sie Ihre Anforderungen: Farben, Größen, individuelle Funktionen, Zeitplan usw.",
-      "files": "Dateien anhängen (optional)",
-      "submit": "Anfrage senden",
-      "success": "Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen."
+    "factory": {
+      "label": "Produktionskapazität",
+      "title": "Drei Produktionsstandorte",
+      "description": "Strategische Standorte in China und Myanmar bieten flexible Produktionskapazität und wettbewerbsfähige Preise für Kunden weltweit.",
+      "myanmarName": "Myanmar Fabrik",
+      "myanmarWorkers": "950 Mitarbeiter",
+      "myanmarLines": "10 Produktionslinien",
+      "myanmarNote": "Zollfrei-Vorteil für EU-Markt",
+      "jiangsu1Name": "Jiangsu Shunyu",
+      "jiangsu1Workers": "278 Mitarbeiter",
+      "jiangsu1Lines": "7 Produktionslinien",
+      "jiangsu1Note": "Schnelle Musterfertigung",
+      "jiangsu2Name": "Jiangsu Shunhao",
+      "jiangsu2Workers": "120 Mitarbeiter",
+      "jiangsu2Lines": "3 Produktionslinien",
+      "jiangsu2Note": "Spezialist für komplexe Designs",
+      "learnMore": "Mehr über unsere Fabriken erfahren",
+      "factoryImage": "Fabrikbild",
+      "productionLine": "Produktionslinie",
+      "qualityControl": "Qualitätskontrolle",
+      "warehouse": "Lager"
     },
-    "footer": {
-      "products": "Produkte",
-      "company": "Unternehmen",
-      "support": "Support",
-      "sizeChart": "Größentabelle",
-      "shipping": "Versandinfo",
-      "payment": "Zahlungsmethoden",
-      "faq": "FAQ",
-      "privacy": "Datenschutz",
-      "terms": "AGB",
-      "copyright": "© 2024 Nanjing Sunmay Co., Ltd. Alle Rechte vorbehalten."
+    "cta": {
+      "title": "Bereit für Ihre Bestellung?",
+      "description": "Ob Sie 200 Stück oder 20.000 benötigen – wir haben die Kapazität und Expertise, um qualitative Outdoor-Bekleidung für Ihre Marke zu liefern.",
+      "browseProducts": "Produkte durchsuchen",
+      "requestQuote": "Individuelles Angebot anfordern"
     }
+  },
+  "product": {
+    "specifications": "Spezifikationen",
+    "colors": "Farben",
+    "sizes": "Größen",
+    "moq": "Mindestbestellung",
+    "pieces": "Stück",
+    "priceRange": "Preisspanne",
+    "addToCart": "In den Warenkorb",
+    "requestQuote": "Angebot anfordern",
+    "relatedProducts": "Ähnliche Produkte",
+    "features": "Hauptmerkmale",
+    "materials": "Materialien"
+  },
+  "cart": {
+    "title": "Großhandelswarenkorb",
+    "empty": "Ihr Warenkorb ist leer",
+    "continueShopping": "Weiter einkaufen",
+    "item": "Artikel",
+    "items": "Artikel",
+    "subtotal": "Zwischensumme",
+    "checkout": "Zur Kasse",
+    "remove": "Entfernen",
+    "color": "Farbe",
+    "size": "Größe",
+    "quantity": "Menge",
+    "unitPrice": "Stückpreis",
+    "total": "Gesamt",
+    "moqWarning": "Mindestbestellmenge ist 200 Stück pro Stil"
+  },
+  "checkout": {
+    "title": "Kasse",
+    "shipping": "Lieferadresse",
+    "payment": "Zahlungsmethode",
+    "review": "Bestellung überprüfen",
+    "placeOrder": "Bestellung aufgeben",
+    "company": "Firmenname",
+    "contact": "Kontaktperson",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "country": "Land",
+    "address": "Adresse",
+    "city": "Stadt",
+    "state": "Bundesland",
+    "postalCode": "Postleitzahl"
+  },
+  "quote": {
+    "title": "Angebot anfordern",
+    "subtitle": "Für Sonderanfertigungen oder große Mengen füllen Sie bitte das Formular aus",
+    "companyName": "Firmenname",
+    "contactName": "Kontaktperson",
+    "email": "E-Mail-Adresse",
+    "phone": "Telefonnummer",
+    "country": "Land",
+    "products": "Interessierte Produkte",
+    "quantity": "Geschätzte Menge",
+    "message": "Zusätzliche Anforderungen",
+    "messagePlaceholder": "Bitte beschreiben Sie Ihre Anforderungen: Farben, Größen, individuelle Funktionen, Zeitplan usw.",
+    "files": "Dateien anhängen (optional)",
+    "submit": "Anfrage senden",
+    "success": "Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen."
+  },
+  "about": {
+    "title": "Über Sunmay",
+    "founded": "Gegründet 2006",
+    "story": "Nanjing Sunmay Co., Ltd. wurde 2006 gegründet, ursprünglich als STIG unter der Sainty Group. Seit 2018 operieren wir unabhängig mit voller Managementautorität.",
+    "mission": "Unsere Mission ist es, ein vertrauenswürdiger Partner für unsere Kunden zu werden und exzellente Kleidungsprodukte und Dienstleistungen anzubieten.",
+    "capacity": "Jahresproduktion",
+    "capacityValue": "1,5 Millionen Stück",
+    "turnover": "Jahresumsatz",
+    "turnoverValue": "30 Millionen $",
+    "shipments": "Jahreslieferungen",
+    "shipmentsValue": "100+ Container"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "address": "Adresse",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "whatsapp": "WhatsApp",
+    "hours": "Geschäftszeiten",
+    "hoursValue": "Mo-Fr 9:00-18:00 (CST)"
+  },
+  "footer": {
+    "products": "Produkte",
+    "company": "Unternehmen",
+    "support": "Support",
+    "sizeChart": "Größentabelle",
+    "shipping": "Versandinfo",
+    "payment": "Zahlungsmethoden",
+    "faq": "FAQ",
+    "privacy": "Datenschutz",
+    "terms": "AGB",
+    "copyright": "© 2024 Nanjing Sunmay Co., Ltd. Alle Rechte vorbehalten."
   }
 }

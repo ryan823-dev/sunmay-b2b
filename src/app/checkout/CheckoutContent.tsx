@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useCart } from '@/lib/cart/CartContext'
 import { formatPrice } from '@/lib/utils'

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { formatPrice, formatMOQ } from '@/lib/utils'
 import type { Product } from '@/types/database'
 
@@ -16,10 +17,12 @@ export function ProductCard({ product }: ProductCardProps) {
       {/* Image */}
       <div className="relative aspect-[3/4] bg-neutral-800 overflow-hidden">
         {product.images[0] ? (
-          <img
+          <Image
             src={product.images[0]}
             alt={product.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            fill
+            sizes="(max-width: 768px) 50vw, 25vw"
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-neutral-600">

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { AIHero } from '@/components/ai/AIHero'
 import { useI18n } from '@/i18n'
 import { 
@@ -182,10 +183,12 @@ export default function HomePage() {
                 className="group bg-white border border-neutral-200 overflow-hidden hover:border-orange-300 transition-all shadow-sm hover:shadow-md"
               >
                 <div className="aspect-[3/4] bg-neutral-100 relative overflow-hidden">
-                  <img
+                  <Image
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-3 left-3">
                     <span className="px-2 py-1 bg-neutral-900/80 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider">

@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { 
   Package, Truck, ShieldCheck, Clock, 
   CheckCircle, ArrowRight, Calculator
@@ -179,10 +180,12 @@ export default function WholesalePage() {
                 href={category.name === 'Custom Designs' ? '/quote' : `/products?category=${category.name.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
                 className="group relative rounded-xl overflow-hidden aspect-video"
               >
-                <img
+                <Image
                   src={category.image}
                   alt={category.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4">
